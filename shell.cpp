@@ -13,7 +13,7 @@
 
 #define BUFF_SIZE 512
 
-char buff[BUFF_SIZE],buff1[BUFF_SIZE],input[BUFF_SIZE];//buff数组存储用户指令
+char buff[BUFF_SIZE],buff1[BUFF_SIZE],input[BUFF_SIZE];//buff鏁扮粍瀛樺偍鐢ㄦ埛鎸囦护
 char *envpath[10];
 int flag=0;
 pid_t pid1=0;
@@ -33,7 +33,7 @@ int main(){
 	  memset(exec_temp,'/0',BUFF_SIZE);
 	  
 	  arg[0]=(char*)malloc(BUFF_SIZE);
-	  //获取用户命令
+	  //鑾峰彇鐢ㄦ埛鍛戒护
 	  while((c=getchar())==' '||c=='/t'||c==EOF);
 	  if(c=='/n') continue;
 	  while(c!='/n'){
@@ -79,7 +79,7 @@ int main(){
 		 free(arg[i]);
 	 continue;
 	 }
-	 //命令执行
+	 //鍛戒护鎵ц
 	 if((pid=fork())==0){
 	   if(is_bg==1)
 	      while(sig_flag==0)
@@ -93,7 +93,6 @@ int main(){
 	}else{
 	   pid1=pid;
 	   if(is_bg==1){
-	   add_node(input,pid1);
 	   kill(pid,SIGUSR1);
 	   pid1=0;
 	   }
@@ -107,7 +106,7 @@ int main(){
 
     }
 }
-//查询路径下的文件是否存在且可执行
+//鏌ヨ璺緞涓嬬殑鏂囦欢鏄惁瀛樺湪涓斿彲鎵ц
 int exec(char *path){
 	struct stat statbuff;
 	int stream;
@@ -120,7 +119,7 @@ int exec(char *path){
    return 0;
 }
 
-//查找外部命令所对应文件是否存在
+//鏌ユ壘澶栭儴鍛戒护鎵�瀵瑰簲鏂囦欢鏄惁瀛樺湪
 int is_found(char *command){
      int i=0;
 	 struct dirent *direntp;
