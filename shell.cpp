@@ -35,13 +35,13 @@ int main(){
 	  arg[0]=(char*)malloc(BUFF_SIZE);
 	  //获取用户命令
 	  while((c=getchar())==' '||c=='\t'||c==EOF);
-	  if(c=='/n') continue;
-	  while(c!='/n'){
+	  if(c=='\n') continue;
+	  while(c!='\n'){
 	      buff[i]=c;
 		  i++;
 	      c=getchar();
 	  }
-	buff[i]='/0';
+	buff[i]='\0';
 	strcpy(input,buff);
 	strcpy(arg[0],buff);
 
@@ -60,7 +60,7 @@ int main(){
 
 	 strcpy(exec_temp,(char*)get_current_dir_name());
 	 if(strcmp((char *)get_current_dir_name(),"\")!=0) 
-     strcat(exec_temp,"/"); 
+         strcat(exec_temp,"\"); 
 
 
 	 for(k=0;k<=i;k++){
@@ -74,7 +74,7 @@ int main(){
 
 
 	 if(is_found(arg[1])==0){
-	 printf("the commond can not find/n");
+	 printf("the commond can not find\n");
 	 for(i=0;i<j;i++)
 		 free(arg[i]);
 	 continue;
@@ -126,7 +126,7 @@ int is_found(char *command){
 	 DIR *dir; 
 	 while(i<sum){
 		 if((dir=opendir(envpath[i]))==NULL){
-		  printf("opendir error!/n"); 
+		  printf("opendir error!\n"); 
 		  exit(0);
 		 }
 		 while((direntp=readdir(dir))!= NULL){
