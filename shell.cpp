@@ -59,8 +59,8 @@ int main(){
 	}
 
 	 strcpy(exec_temp,(char*)get_current_dir_name());
-	 if(strcmp((char *)get_current_dir_name(),"\")!=0) 
-         strcat(exec_temp,"\"); 
+	 if(strcmp((char *)get_current_dir_name(),"/")!=0) 
+         strcat(exec_temp,"/"); 
 
 
 	 for(k=0;k<=i;k++){
@@ -132,7 +132,8 @@ int is_found(char *command){
 		 while((direntp=readdir(dir))!= NULL){
 			 if(strcmp(cmd,direntp->d_name)==0) {
 			   strcpy(buff1,envpath[i]);
-			   strcat(buff1,"\");
+			  // strcat(buff1,"\");
+			  strcat(buff1,"/");
 			   strcat(buff1,direntp->d_name);
 			   strcpy(buff,buff1); 
 			   closedir(dir);
