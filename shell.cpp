@@ -27,14 +27,14 @@ int main(){
 	while(1){
 	  char c,*arg[20],*temp,*temp1,*argv,exec_temp[BUFF_SIZE];
 	  int i=0,j=0,is_bg=0,pid=0;
-	  memset(buff,'/0',BUFF_SIZE);
-	  memset(buff1,'/0',BUFF_SIZE);
-	  memset(imput,'/0',BUFF_SIZE);
-	  memset(exec_temp,'/0',BUFF_SIZE);
+	  memset(buff,'\0',BUFF_SIZE);
+	  memset(buff1,'\0',BUFF_SIZE);
+	  memset(imput,'\0',BUFF_SIZE);
+	  memset(exec_temp,'\0',BUFF_SIZE);
 	  
 	  arg[0]=(char*)malloc(BUFF_SIZE);
 	  //获取用户命令
-	  while((c=getchar())==' '||c=='/t'||c==EOF);
+	  while((c=getchar())==' '||c=='\t'||c==EOF);
 	  if(c=='/n') continue;
 	  while(c!='/n'){
 	      buff[i]=c;
@@ -59,14 +59,14 @@ int main(){
 	}
 
 	 strcpy(exec_temp,(char*)get_current_dir_name());
-	 if(strcmp((char *)get_current_dir_name(),"/")!=0) 
+	 if(strcmp((char *)get_current_dir_name(),"\")!=0) 
      strcat(exec_temp,"/"); 
 
 
 	 for(k=0;k<=i;k++){
-		 if(arg[1][k]=='&'&&arg[1][k+1]=='/0'){
+		 if(arg[1][k]=='&'&&arg[1][k+1]=='\0'){
 		 is_bg=1;
-		 arg[1][k]='/0';
+		 arg[1][k]='\0';
 		 break;	 
 		 } 
 	 }
@@ -132,7 +132,7 @@ int is_found(char *command){
 		 while((direntp=readdir(dir))!= NULL){
 			 if(strcmp(cmd,direntp->d_name)==0) {
 			   strcpy(buff1,envpath[i]);
-			   strcat(buff1,"/");
+			   strcat(buff1,"\");
 			   strcat(buff1,direntp->d_name);
 			   strcpy(buff,buff1); 
 			   closedir(dir);
